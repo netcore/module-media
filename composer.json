@@ -1,0 +1,25 @@
+{
+    "name": "netcore/module-media",
+    "description": "",
+    "type": "module",
+    "authors": [
+        {
+            "name": "Daniels Grietins",
+            "email": "daniels.grietins@netcore.lv"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modules\\Media\\": ""
+        }
+    },
+    "require": {
+        "php": ">=5.5",
+        "crip-laravel/filesys": "dev-master"
+    },
+    "minimum-stability": "dev",
+    "repositories": [{
+        "type": "path",
+        "url": "https://github.com/netcore/filesys"
+    }]
+}
