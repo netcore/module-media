@@ -1,8 +1,8 @@
 $(function () {
-
-    var fileManagerButton = $('.js-file-manager');
+    var managerClass = '.js-file-manager';
+    var fileManagerButton = $(managerClass);
     fileManagerButton.prop('disabled', false);
-    fileManagerButton.on('click', function (e) {
+    $(document).on('click', managerClass, function (e) {
         e.preventDefault();
         $('#file-manager-modal').modal('toggle');
     });
