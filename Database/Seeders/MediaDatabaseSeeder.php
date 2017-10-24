@@ -23,7 +23,7 @@ class MediaDatabaseSeeder extends Seeder
             'leftAdminMenu' => [
                 [
                     'name'       => 'Media manager',
-                    'icon'       => 'fa-folder',
+                    'icon'       => 'fa-folder-open',
                     'type'       => 'url',
                     'value'      => 'javascript:;',
                     'module'     => 'Media',
