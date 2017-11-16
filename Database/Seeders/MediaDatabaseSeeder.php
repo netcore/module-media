@@ -5,7 +5,7 @@ namespace Modules\Media\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Admin\Models\Menu;
-use Modules\Admin\Models\MenuItem;
+use Netcore\Translator\Helpers\TransHelper;
 
 class MediaDatabaseSeeder extends Seeder
 {
@@ -38,10 +38,18 @@ class MediaDatabaseSeeder extends Seeder
                 'name' => $name
             ]);
 
-
             foreach ($items as $item) {
-                $item['menu_id'] = $menu->id;
-                MenuItem::firstOrCreate(array_except($item, 'children'));
+                $row = $menu->items()->firstOrCreate(array_except($item, ['name', 'value', 'parameters']));
+
+                $translations = [];
+                foreach (TransHelper::getAllLanguages() as $language) {
+                    $translations[$language->iso_code] = [
+                        'name'       => $item['name'],
+                        'value'      => $item['value'],
+                        'parameters' => $item['parameters']
+                    ];
+                }
+                $row->updateTranslations($translations);
             }
         }
     }
