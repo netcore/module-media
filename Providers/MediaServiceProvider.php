@@ -35,7 +35,6 @@ class MediaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(RouteServiceProvider::class);
         $this->app->register(\Crip\Filesys\CripFilesysServiceProvider::class);
     }
 
