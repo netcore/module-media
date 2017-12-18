@@ -41,6 +41,7 @@ $(function () {
     });
 
     window.cripFilesystemManager = function (fileUrl, params) {
+
         // will recive params.flag and params.one parameter as they are
         // presented in href below
         var url = window.location.href;
@@ -53,5 +54,19 @@ $(function () {
             fileManagerButton.parent().parent().find('input[type="text"]').val(result);
         }
         $('#file-manager-modal').modal('toggle');
+
+        $('.js-media-url').val(result);
+
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($('.js-media-url').val()).select();
+        document.execCommand("copy");
+        $temp.remove();
+
+        $.growl({
+            title : 'Success!',
+            type: 'success',
+            message : 'Media url successfully copied!'
+        });
     };
 });
